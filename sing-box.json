@@ -1,0 +1,54 @@
+
+{
+  "log": {
+    "level": "warning",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      { "tag": "google", "address": "8.8.8.8" },
+      { "tag": "cloudflare", "address": "1.1.1.1" }
+    ],
+    "strategy": "prefer_ipv4"
+  },
+  "inbounds": [
+    {
+      "type": "trojan",
+      "tag": "trojan-ws",
+      "listen": "127.0.0.1",
+      "listen_port": 10001,
+      "users": [
+        { "password": "xray-2026" }
+      ],
+      "transport": {
+        "type": "ws",
+        "path": "/tr-ws-xray",
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "sniff": true,
+      "sniff_override_destination": true
+    },
+    {
+      "type": "vless",
+      "tag": "vless-ws",
+      "listen": "127.0.0.1",
+      "listen_port": 10002,
+      "users": [
+        {
+          "id": "a1b2c3d4-5678-40ef-98ab-cdef01234567",
+          "flow": ""
+        }
+      ],
+      "transport": {
+        "type": "ws",
+        "path": "/vl-ws-xray",
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "sniff": true,
+      "sniff_override_destination": true
+    }
+  ],
+  "outbounds": [
+    { "type": "direct" }
+  ]
+}
