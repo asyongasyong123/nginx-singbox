@@ -18,11 +18,11 @@
       "listen": "127.0.0.1",
       "listen_port": 10001,
       "users": [
-        { "password": "xray-2026" }
+        { "password": "nginx+sing-box" }
       ],
       "transport": {
         "type": "ws",
-        "path": "/tr-ws-xray",
+        "path": "/trojan-n+s-b",
         "early_data_header_name": "Sec-WebSocket-Protocol"
       },
       "sniff": true,
@@ -41,7 +41,7 @@
       ],
       "transport": {
         "type": "ws",
-        "path": "/vl-ws-xray",
+        "path": "/vless-n+s-b",
         "early_data_header_name": "Sec-WebSocket-Protocol"
       },
       "sniff": true,
